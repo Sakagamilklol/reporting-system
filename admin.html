@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Reports</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="logo-text">SafeReport Admin</div>
+        </div>
+        <div class="nav">
+            <a href="index.html"><i class="fas fa-home"></i> home</a>
+            <a href="#"><i class="fas fa-info-circle"></i> about</a>
+            <a href="#"><i class="fas fa-exclamation-triangle"></i> แจ้งเหตุ</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> contact</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="page-title">Submitted Reports</h1>
+        
+        <div class="admin-controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search reports...">
+                <button class="btn-pink"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filters">
+                <select id="statusFilter">
+                    <option value="all">All Statuses</option>
+                    <option value="new">New</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+                <select id="dateFilter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="reportsContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

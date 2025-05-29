@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="logo-text">SafeReport</div>
+        </div>
+        <div class="nav">
+            <a href="index.html"><i class="fas fa-home"></i> home</a>
+            <a href="#"><i class="fas fa-info-circle"></i> about</a>
+            <a href="#"><i class="fas fa-exclamation-triangle"></i> แจ้งเหตุ</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> contact</a>
+            <a href="login.html" class="active"><i class="fas fa-sign-in-alt"></i> login</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="login-container">
+            <div class="card login-form">
+                <h2 class="text-center"><i class="fas fa-lock"></i> Admin Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-group remember">
+                        <label>
+                            <input type="checkbox" name="remember"> Remember me
+                        </label>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn-pink">Login <i class="fas fa-sign-in-alt"></i></button>
+                    </div>
+                </form>
+                
+                <div id="loginError" class="login-error hidden">
+                    <i class="fas fa-exclamation-circle"></i> Invalid username or password. Please try again.
+                </div>
+                
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
