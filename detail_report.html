@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <button onclick="window.location.href='admin.html'" class="btn-pink"><i class="fas fa-arrow-left"></i> Back to Reports</button>
+            <h2>Report Details</h2>
+            <div id="reportDetails"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const reportId = urlParams.get('id');
+            const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+            const report = submissions[reportId];
+
+            if (report) {
+                document.getElementById('reportDetails').innerHTML = `
+                    <p><strong>Name:</strong> ${report.reporterName || 'N/A'}</p>
+                    ${report.position ? `<p><strong>Position/Role:</strong> ${report.position}</p>` : ''}
+                    <p><strong>Address/Location:</strong> ${report.address}</p>
+                    <p><strong>Title:</strong> ${report.title}</p>
+                    <p><strong>Description:</strong> ${report.description}</p>
+                    <p><strong>Status:</strong> ${report.status}</p>
+                    <p><strong>Submitted:</strong> ${new Date(report.timestamp).toLocaleString()}</p>
+                    <div><strong>Files:</strong>
+                        ${report.files.length ? report.files.map(file => `<p>${file}</p>`).join('') : 'No Files'}
+                    </div>
+                `;
+            } else {
+                document.getElementById('reportDetails').innerHTML = '<p>No report found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

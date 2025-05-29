@@ -16,7 +16,7 @@
             <div class="logo-text">SafeReport</div>
         </div>
         <div class="nav">
-            <a href="https://www.m-society.go.th/home.php"><i class="fas fa-home"></i> home</a>
+            <a href="index.html"><i class="fas fa-home"></i> home</a>
             <a href="#"><i class="fas fa-info-circle"></i> about</a>
             <a href="index.html" class="active"><i class="fas fa-exclamation-triangle"></i> แจ้งเหตุ</a>
             <a href="#"><i class="fas fa-phone-alt"></i> contact</a>
@@ -69,7 +69,17 @@
         <div id="citizenForm" class="card hidden">
             <h2><i class="fas fa-exclamation-circle"></i> Incident Details</h2>
             <form id="reportForm">
-                <div class="form-group">
+                
+<div class="form-group">
+    <label for="reporterName">Your Name</label>
+    <input type="text" id="reporterName" name="reporterName" placeholder="Enter your name" required>
+</div>
+<div class="form-group">
+    <label for="address">Address/Location</label>
+    <input type="text" id="address" name="address" placeholder="Enter the incident address or location" required>
+</div>
+
+<div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="Brief description of the incident" required>
                 </div>
@@ -99,7 +109,55 @@
             </form>
         </div>
         
-        <!-- Thank You Message -->
+        
+<!-- Other User Form -->
+<div id="otherForm" class="card hidden">
+    <h2><i class="fas fa-users"></i> Incident Details for Organization</h2>
+    <form id="otherReportForm">
+        
+<div class="form-group">
+    <label for="reporterName">Your Name</label>
+    <input type="text" id="reporterName" name="reporterName" placeholder="Enter your name" required>
+</div>
+<div class="form-group">
+    <label for="address">Address/Location</label>
+    <input type="text" id="address" name="address" placeholder="Enter the incident address or location" required>
+</div>
+
+<div class="form-group">
+    <label for="position">Your Position/Role</label>
+    <input type="text" id="position" name="position" placeholder="Enter your position or role" required>
+</div>
+
+        <div class="form-group">
+            <label for="titleOther">Title</label>
+            <input type="text" id="titleOther" name="title" placeholder="Brief description of the incident" required>
+        </div>
+        <div class="form-group">
+            <label for="descriptionOther">Description</label>
+            <textarea id="descriptionOther" name="description" rows="4" placeholder="Provide detailed information about the incident..." required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Upload Images/Files</label>
+            <div class="file-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & drop files here or click to browse</p>
+                <input type="file" name="files" multiple style="display: none">
+                <div class="text-center" style="margin-top: 15px;">
+                    <button type="button" class="btn-pink" onclick="document.querySelector('input[type=file]').click()">
+                        <i class="fas fa-folder-open"></i> Select Files
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn-pink">Submit Report <i class="fas fa-paper-plane"></i></button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Thank You Message -->
         <div id="thankYou" class="card thank-you-card hidden">
             <i class="fas fa-check-circle"></i>
             <h3>Thank you for your report!</h3>

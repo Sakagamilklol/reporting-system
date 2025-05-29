@@ -266,3 +266,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// Handling "Other" User Type
+const otherForm = document.getElementById('otherForm');
+const otherReportForm = document.getElementById('otherReportForm');
+
+if (userForm) {
+    userForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const userType = document.querySelector('input[name="user"]:checked')?.value;
+
+        if (userType === 'citizen') {
+            step1.classList.add('hidden');
+            citizenForm.classList.remove('hidden');
+        } else if (userType === 'government') {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'login.html';
+            }
+        } else if (userType === 'other') {
+            step1.classList.add('hidden');
+            otherForm.classList.remove('hidden');
+        } else {
+            alert('Please select a valid option.');
+        }
+    });
+}
+
+if (otherReportForm) {
+    otherReportForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const reporterName = document.getElementById('reporterName').value;
+        const address = document.getElementById('address').value;
+        const position = document.getElementById('position').value;
+        const title = document.getElementById('titleOther').value;
+        const description = document.getElementById('descriptionOther').value;
+        const files = Array.from(otherReportForm.querySelector('input[type="file"]').files).map(file => file.name);
+
+        const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+        submissions.push({
+            reporterName,
+            address,
+            position,
+            title,
+            description,
+            files,
+            timestamp: Date.now(),
+            status: "new",
+            reportedBy: "organization"
+        });
+        localStorage.setItem('submissions', JSON.stringify(submissions));
+
+        otherForm.classList.add('hidden');
+        thankYou.classList.remove('hidden');
+        thankYou.scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
+
+// Ensure navigation to reporting forms
+if (window.location.pathname.includes('index.html')) {
+    document.querySelector('.nav a[href="index.html"]').addEventListener('click', () => {
+        step1.scrollIntoView({ behavior: 'smooth' });
+    });
+}
